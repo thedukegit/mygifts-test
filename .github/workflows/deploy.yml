@@ -18,7 +18,7 @@ jobs:
       - name: Get SSH Key and set permission
         run: |
             mkdir -p ~/.ssh
-            echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
+            echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github-actions-created-on-lightsail
+            chmod 600 ~/.ssh/github-actions-created-on-lightsail
       - name: Deploy using SCP
-        run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ./dist/mygifts-test/browser ubuntu@52.28.37.136:/var/www/mygifts-test
+        run: scp -o StrictHostKeyChecking=no -i ~/.ssh/github-actions-created-on-lightsail ./dist/mygifts-test/browser/* ubuntu@52.28.37.136:/var/www/mygifts-test
