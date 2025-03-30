@@ -27,6 +27,7 @@ jobs:
     - name: Get SSH credentials
       run: |
             mkdir -p ~/.ssh
+            echo "${{ secrets.SSH_PRIVATE_KEY }}"
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github-actions-created-on-lightsail
             chmod 600 ~/.ssh/github-actions-created-on-lightsail
     - name: Deploy using SCP
