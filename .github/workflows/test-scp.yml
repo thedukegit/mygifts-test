@@ -27,8 +27,8 @@ jobs:
     - name: Get SSH credentials
       run: |
             mkdir -p ~/.ssh
-            echo "${{ secrets.SSH_PRIVATE_KEY }}"
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github-actions-created-on-lightsail
             chmod 600 ~/.ssh/github-actions-created-on-lightsail
+            cat ~/.ssh/github-actions-created-on-lightsail
     - name: Deploy using SCP
       run: scp -v -o StrictHostKeyChecking=no -i ~/.ssh/github-actions-created-on-lightsail ~/test-file.txt ubuntu@52.28.37.136:/var/www/test
